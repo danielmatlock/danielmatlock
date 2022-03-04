@@ -1,4 +1,4 @@
-# This creates a VPC with two public subnets and two private subnets in two Availability Zones, 
+# This creates a VPC with three public subnets and thtree private subnets in two Availability Zones, 
 # together with a NAT Gateway and associated routing. Change the Availability Zone locations as needed.
 
 # Important: this configures various AWS services and there are costs associated with these services after the Free Tier usage.
@@ -13,39 +13,55 @@
       PubPrivateVPC:
         Type: AWS::EC2::VPC
         Properties:
-          CidrBlock: 10.0.0.0/16
+          CidrBlock: 10.21.0.0/16
 
       ## SUBNETS     
       PublicSubnet1:
         Type: AWS::EC2::Subnet
         Properties:
           VpcId: !Ref PubPrivateVPC
-          AvailabilityZone: us-east-2a
-          CidrBlock: 10.0.1.0/24
+          AvailabilityZone: eu-west-2a
+          CidrBlock: 10.21.1.0/24
           MapPublicIpOnLaunch: true
      
       PublicSubnet2:
         Type: AWS::EC2::Subnet
         Properties:
           VpcId: !Ref PubPrivateVPC
-          AvailabilityZone: us-east-2b
-          CidrBlock: 10.0.2.0/24
+          AvailabilityZone: eu-west-2b
+          CidrBlock: 10.21.2.0/24
+          MapPublicIpOnLaunch: true
+          
+          PublicSubnet3:
+        Type: AWS::EC2::Subnet
+        Properties:
+          VpcId: !Ref PubPrivateVPC
+          AvailabilityZone: eu-west-2c
+          CidrBlock: 10.21.3.0/24
           MapPublicIpOnLaunch: true
      
       PrivateSubnet1:
         Type: AWS::EC2::Subnet
         Properties:
           VpcId: !Ref PubPrivateVPC
-          AvailabilityZone: us-east-2a
-          CidrBlock: 10.0.3.0/24
+          AvailabilityZone: eu-west-2a
+          CidrBlock: 10.21.11.0/24
           MapPublicIpOnLaunch: false
      
       PrivateSubnet2:
         Type: AWS::EC2::Subnet
         Properties:
           VpcId: !Ref PubPrivateVPC
-          AvailabilityZone: us-east-2b
-          CidrBlock: 10.0.4.0/24
+          AvailabilityZone: eu-west-2b
+          CidrBlock: 10.21.12.0/24
+          MapPublicIpOnLaunch: false
+          
+          PrivateSubnet2:
+        Type: AWS::EC2::Subnet
+        Properties:
+          VpcId: !Ref PubPrivateVPC
+          AvailabilityZone: eu-west-2c
+          CidrBlock: 10.21.12.0/24
           MapPublicIpOnLaunch: false
      
      ## INTERNET GATEWAY
@@ -83,6 +99,12 @@
         Properties:
           SubnetId: !Ref PublicSubnet2
           RouteTableId: !Ref PublicRouteTable
+          
+      PublicSubnet3RouteTableAssociation:
+        Type: AWS::EC2::SubnetRouteTableAssociation
+        Properties:
+          SubnetId: !Ref PublicSubnet3
+          RouteTableId: !Ref PublicRouteTable    
      
       ## NAT GATEWAY
       NatGateway:
@@ -123,3 +145,9 @@
         Properties:
           SubnetId: !Ref PrivateSubnet2
           RouteTableId: !Ref PrivateRouteTable
+          
+       PrivateSubnet3RouteTableAssociation:
+        Type: AWS::EC2::SubnetRouteTableAssociation
+        Properties:
+          SubnetId: !Ref PrivateSubnet3
+          RouteTableId: !Ref PrivateRouteTable   
