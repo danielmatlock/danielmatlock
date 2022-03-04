@@ -61,7 +61,7 @@
         Properties:
           VpcId: !Ref PubPrivateVPC
           AvailabilityZone: eu-west-2c
-          CidrBlock: 10.21.12.0/24
+          CidrBlock: 10.21.13.0/24
           MapPublicIpOnLaunch: false
      
      ## INTERNET GATEWAY
