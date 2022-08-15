@@ -6,30 +6,30 @@
 # No warranty is implied in this example.
 
 # Usage from command line:
-#   aws cloudformation --region <<YOUR-REGION>> create-stack --stack-name vpc- --template-body file://vpc-setup.yaml
+#   aws cloudformation --region eu-west-2 create-stack --stack-name vpc- --template-body file://vpc-setup.yaml
     
     Resources:
       ## VPC
       PubPrivateVPC:
         Type: AWS::EC2::VPC
         Properties:
-          CidrBlock: 10.0.0.0/16
+          CidrBlock: 10.22.0.0/16
 
       ## SUBNETS     
       PublicSubnet1:
         Type: AWS::EC2::Subnet
         Properties:
           VpcId: !Ref PubPrivateVPC
-          AvailabilityZone: us-east-2a
-          CidrBlock: 10.0.1.0/24
+          AvailabilityZone: eu-west-2a
+          CidrBlock: 10.22.1.0/24
           MapPublicIpOnLaunch: true
      
       PublicSubnet2:
         Type: AWS::EC2::Subnet
         Properties:
           VpcId: !Ref PubPrivateVPC
-          AvailabilityZone: us-east-2b
-          CidrBlock: 10.0.2.0/24
+          AvailabilityZone: eu-west-2b
+          CidrBlock: 10.22.102.0/24
           MapPublicIpOnLaunch: true
      
       PrivateSubnet1:
@@ -37,7 +37,7 @@
         Properties:
           VpcId: !Ref PubPrivateVPC
           AvailabilityZone: us-east-2a
-          CidrBlock: 10.0.3.0/24
+          CidrBlock: 10.22.2.0/24
           MapPublicIpOnLaunch: false
      
       PrivateSubnet2:
@@ -45,7 +45,7 @@
         Properties:
           VpcId: !Ref PubPrivateVPC
           AvailabilityZone: us-east-2b
-          CidrBlock: 10.0.4.0/24
+          CidrBlock: 10.22.102.0/24
           MapPublicIpOnLaunch: false
      
      ## INTERNET GATEWAY
@@ -69,7 +69,7 @@
         DependsOn: GatewayToInternet
         Properties:
           RouteTableId: !Ref PublicRouteTable
-          DestinationCidrBlock: 0.0.0.0/0
+          DestinationCidrBlock: 10.22.0.0/16
           GatewayId: !Ref InternetGateway
      
       PublicSubnet1RouteTableAssociation:
