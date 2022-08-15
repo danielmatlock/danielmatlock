@@ -1,4 +1,4 @@
-# This creates a VPC with three public subnets and thtree private subnets in two Availability Zones, 
+# This creates a VPC with three public subnets and three private subnets in two Availability Zones, 
 # together with a NAT Gateway and associated routing. Change the Availability Zone locations as needed.
 
 # Important: this configures various AWS services and there are costs associated with these services after the Free Tier usage.
