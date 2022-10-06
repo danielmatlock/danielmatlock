@@ -10,7 +10,7 @@
     
     Resources:
       ## VPC
-      vpc-eu-west-2-shared:
+      vpc-euwest2-shared:
         Type: AWS::EC2::VPC
         Properties:
           CidrBlock: 10.10.0.0/16
@@ -19,7 +19,7 @@
       subnet-eu-west-2a-backoffice-1:
         Type: AWS::EC2::Subnet
         Properties:
-          VpcId: !Ref vpc-eu-west-2-shared
+          VpcId: !Ref vpc-euwest2-shared
           AvailabilityZone: eu-west-2a
           CidrBlock: 10.10.1.0/24
           MapPublicIpOnLaunch: true
@@ -27,7 +27,7 @@
       subnet-eu-west-2b-backoffice-2:
         Type: AWS::EC2::Subnet
         Properties:
-          VpcId: !Ref vpc-eu-west-2-shared
+          VpcId: !Ref vpc-euwest2-shared
           AvailabilityZone: eu-west-2b
           CidrBlock: 10.101.102.0/24
           MapPublicIpOnLaunch: true
@@ -35,7 +35,7 @@
       subnet-eu-west-2a-basiton-1:
         Type: AWS::EC2::Subnet
         Properties:
-          VpcId: !Ref vpc-eu-west-2-shared
+          VpcId: !Ref vpc-euwest2-shared
           AvailabilityZone: us-east-2a
           CidrBlock: 10.10.2.0/24
           MapPublicIpOnLaunch: false
@@ -43,7 +43,7 @@
       subnet-eu-west-2b-basiton-2:
         Type: AWS::EC2::Subnet
         Properties:
-          VpcId: !Ref vpc-eu-west-2-shared
+          VpcId: !Ref vpc-euwest2-shared
           AvailabilityZone: us-east-2b
           CidrBlock: 10.22.102.0/24
           MapPublicIpOnLaunch: false
@@ -55,14 +55,14 @@
       GatewayToInternet:
         Type: AWS::EC2::VPCGatewayAttachment
         Properties:
-          VpcId: !Ref vpc-eu-west-2-shared
+          VpcId: !Ref vpc-euwest2-shared
           InternetGatewayId: !Ref intgw-eu-west-2-basiton
       
       ## PUBLIC ROUTING
       rt-eu-west-2-basiton:
         Type: AWS::EC2::RouteTable
         Properties:
-          VpcId: !Ref vpc-eu-west-2-shared
+          VpcId: !Ref vpc-euwest2-shared
       
       PublicRoute:
         Type: AWS::EC2::Route
@@ -95,7 +95,7 @@
       ## ELASTIC IP
       NatPublicIP:
         Type: AWS::EC2::EIP
-        DependsOn: vpc-eu-west-2-shared
+        DependsOn: vpc-euwest2-shared
         Properties:
           Domain: vpc
      
@@ -103,7 +103,7 @@
       rt-eu-west-2-backoffice:
         Type: AWS::EC2::RouteTable
         Properties:
-          VpcId: !Ref vpc-eu-west-2-shared
+          VpcId: !Ref vpc-euwest2-shared
       
       PrivateRoute:
         Type: AWS::EC2::Route
