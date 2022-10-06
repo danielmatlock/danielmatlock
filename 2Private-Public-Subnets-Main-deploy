@@ -100,7 +100,7 @@
           Domain: vpc
      
       ## PRIVATE ROUTING
-      PrivateRouteTable:
+      rt-eu-west-2-backoffice:
         Type: AWS::EC2::RouteTable
         Properties:
           VpcId: !Ref vpc-eu-west-2-shared
@@ -109,20 +109,20 @@
         Type: AWS::EC2::Route
         Properties:
           NatGatewayId: !Ref natgw-eu-west-2-backoffice
-          RouteTableId: !Ref PrivateRouteTable
+          RouteTableId: !Ref rt-eu-west-2-backoffice
           DestinationCidrBlock: 0.0.0.0/0
      
       PrivateSubnet1RouteTableAssociation:
         Type: AWS::EC2::SubnetRouteTableAssociation
         Properties:
           SubnetId: !Ref PrivateSubnet1
-          RouteTableId: !Ref PrivateRouteTable
+          RouteTableId: !Ref rt-eu-west-2-backoffice
      
       PrivateSubnet2RouteTableAssociation:
         Type: AWS::EC2::SubnetRouteTableAssociation
         Properties:
           SubnetId: !Ref PrivateSubnet2
-          RouteTableId: !Ref PrivateRouteTable
+          RouteTableId: !Ref rt-eu-west-2-backoffice
 Footer
 © 2022 GitHub, Inc.
 Footer navigation
