@@ -151,7 +151,7 @@
         Properties:
           SubnetId: !Ref PrivateSubnet1
           RouteTableId: !Ref PrivateRouteTable
-           Tags:
+          Tags:
             - Key: Name
               Value: rt-eu-west-2a-backoffice-1
      
