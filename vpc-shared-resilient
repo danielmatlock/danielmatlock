@@ -72,9 +72,6 @@
         Properties:
           VpcId: !Ref PubPrivateVPC
           InternetGatewayId: !Ref InternetGateway
-          Tags:
-            - Key: Name
-              Value: intgw-eu-west-2
       
       ## PUBLIC ROUTING
       PublicRouteTable:
