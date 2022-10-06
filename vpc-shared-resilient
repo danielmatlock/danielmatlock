@@ -67,15 +67,15 @@
       InternetGateway:
         Type: AWS::EC2::InternetGateway
         Properties:
-        Tags:
-            - Key: Name
-              Value: intgw-eu-west-2
       
       GatewayToInternet:
         Type: AWS::EC2::VPCGatewayAttachment
         Properties:
           VpcId: !Ref PubPrivateVPC
           InternetGatewayId: !Ref InternetGateway
+          Tags:
+            - Key: Name
+              Value: intgw-eu-west-2
       
       ## PUBLIC ROUTING
       PublicRouteTable:
