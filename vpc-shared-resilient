@@ -45,7 +45,7 @@
         Type: AWS::EC2::Subnet
         Properties:
           VpcId: !Ref PubPrivateVPC
-          AvailabilityZone: us-east-2a
+          AvailabilityZone: eu-west-2a
           CidrBlock: 10.22.2.0/24
           MapPublicIpOnLaunch: false
           Tags:
@@ -56,7 +56,7 @@
         Type: AWS::EC2::Subnet
         Properties:
           VpcId: !Ref PubPrivateVPC
-          AvailabilityZone: us-east-2b
+          AvailabilityZone: eu-west-2b
           CidrBlock: 10.22.102.0/24
           MapPublicIpOnLaunch: false
           Tags:
