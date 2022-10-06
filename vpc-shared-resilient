@@ -89,24 +89,22 @@
           RouteTableId: !Ref PublicRouteTable
           DestinationCidrBlock: 10.22.0.0/16
           GatewayId: !Ref InternetGateway
+          Tags:
+            - Key: Name
+              Value: rt-external
+     
      
       PublicSubnet1RouteTableAssociation:
         Type: AWS::EC2::SubnetRouteTableAssociation
         Properties:
           SubnetId: !Ref PublicSubnet1
           RouteTableId: !Ref PublicRouteTable
-          Tags:
-            - Key: Name
-              Value: rt-eu-west-2a-external-1
-     
+
       PublicSubnet2RouteTableAssociation:
         Type: AWS::EC2::SubnetRouteTableAssociation
         Properties:
           SubnetId: !Ref PublicSubnet2
           RouteTableId: !Ref PublicRouteTable
-          Tags:
-            - Key: Name
-              Value: rt-eu-west-2b-external-2
      
       ## NAT GATEWAY
       NatGateway:
@@ -117,7 +115,7 @@
           AllocationId: !GetAtt NatPublicIP.AllocationId
           Tags:
             - Key: Name
-              Value: natgw-eu-west-2-backoffice
+              Value: natgw-backoffice
 
       ## ELASTIC IP
       NatPublicIP:
@@ -147,15 +145,10 @@
         Properties:
           SubnetId: !Ref PrivateSubnet1
           RouteTableId: !Ref PrivateRouteTable
-          Tags:
-            - Key: Name
-              Value: rt-eu-west-2a-backoffice-1
      
       PrivateSubnet2RouteTableAssociation:
         Type: AWS::EC2::SubnetRouteTableAssociation
         Properties:
           SubnetId: !Ref PrivateSubnet2
           RouteTableId: !Ref PrivateRouteTable
-          Tags:
-            - Key: Name
-              Value: rt-eu-west-2b-backoffice-2
+
