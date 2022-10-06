@@ -10,7 +10,7 @@
     
     Resources:
       ## VPC
-      vpc-euwest2-shared:
+      "vpc-eu-west-2-shared":
         Type: AWS::EC2::VPC
         Properties:
           CidrBlock: 10.10.0.0/16
