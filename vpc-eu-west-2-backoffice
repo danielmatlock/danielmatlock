@@ -148,18 +148,3 @@
         Properties:
           SubnetId: !Ref PrivateSubnet2
           RouteTableId: !Ref PrivateRouteTable
-          
-#AWs Directory Services Install
-myDirectory: 
-  Type: AWS::DirectoryService::SimpleAD
-  Properties: 
-    Name: "corp.matlock.com"
-    Password: rxQnkT8SS5lsBy3k
-      Ref: SimpleADPW
-    Size: "Small"
-    VpcSettings: 
-      SubnetIds: 
-        - Ref: subnetID1
-        - Ref: subnetID2
-      VpcId: 
-        Ref: !Ref PubPrivateVPC
