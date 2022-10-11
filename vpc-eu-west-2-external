@@ -24,7 +24,7 @@
         Properties:
           VpcId: !Ref PubPrivateVPC
           AvailabilityZone: eu-west-2a
-          CidrBlock: 10.22.1.0/24
+          CidrBlock: 10.21.1.0/24
           MapPublicIpOnLaunch: true
           Tags:
             - Key: Name
@@ -35,7 +35,7 @@
         Properties:
           VpcId: !Ref PubPrivateVPC
           AvailabilityZone: eu-west-2b
-          CidrBlock: 10.22.101.0/24
+          CidrBlock: 10.21.101.0/24
           MapPublicIpOnLaunch: true
           Tags:
             - Key: Name
