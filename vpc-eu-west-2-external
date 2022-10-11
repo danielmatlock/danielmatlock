@@ -28,7 +28,7 @@
           MapPublicIpOnLaunch: true
           Tags:
             - Key: Name
-              Value: psubnet-eu-west-2a-external-1
+              Value: pubnet-eu-west-2a-external-1
      
       PublicSubnet2:
         Type: AWS::EC2::Subnet
@@ -39,7 +39,7 @@
           MapPublicIpOnLaunch: true
           Tags:
             - Key: Name
-              Value: psubnet-eu-west-2b-external-2
+              Value: pubnet-eu-west-2b-external-2
      
      
      ## INTERNET GATEWAY
