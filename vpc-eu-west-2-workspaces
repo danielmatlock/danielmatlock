@@ -129,6 +129,9 @@
         Type: AWS::EC2::RouteTable
         Properties:
           VpcId: !Ref PubPrivateVPC
+          Tags:
+            - Key: Name
+              Value: rt-private-workspaces
       
       PrivateRoute:
         Type: AWS::EC2::Route
