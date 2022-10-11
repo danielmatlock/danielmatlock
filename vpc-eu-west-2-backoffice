@@ -16,7 +16,7 @@
           CidrBlock: 10.22.0.0/16
           Tags:
             - Key: Name
-              Value: vpc-eu-west-2-shared
+              Value: vpc-eu-west-2-backoffice
 
       ## SUBNETS     
       PublicSubnet1:
@@ -28,7 +28,7 @@
           MapPublicIpOnLaunch: true
           Tags:
             - Key: Name
-              Value: subnet-eu-west-2a-external-1
+              Value: pubnet-eu-west-2a-backoffice-1
      
       PublicSubnet2:
         Type: AWS::EC2::Subnet
@@ -39,7 +39,7 @@
           MapPublicIpOnLaunch: true
           Tags:
             - Key: Name
-              Value: subnet-eu-west-2b-external-2
+              Value: pubnet-eu-west-2b-backoffice-2
      
       PrivateSubnet1:
         Type: AWS::EC2::Subnet
@@ -50,7 +50,7 @@
           MapPublicIpOnLaunch: false
           Tags:
             - Key: Name
-              Value: subnet-eu-west-2a-backoffice-1
+              Value: prinet-eu-west-2a-backoffice-1
      
       PrivateSubnet2:
         Type: AWS::EC2::Subnet
@@ -61,7 +61,7 @@
           MapPublicIpOnLaunch: false
           Tags:
             - Key: Name
-              Value: subnet-eu-west-2b-backoffice-2
+              Value: prinet-eu-west-2b-backoffice-2
      
      ## INTERNET GATEWAY
       InternetGateway:
@@ -80,7 +80,7 @@
           VpcId: !Ref PubPrivateVPC
           Tags:
             - Key: Name
-              Value: rt--eu-west-2-public
+              Value: rt--eu-west-2-public-backoffice
       
       PublicRoute:
         Type: AWS::EC2::Route
