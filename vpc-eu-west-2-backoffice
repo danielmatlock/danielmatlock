@@ -80,7 +80,7 @@
           VpcId: !Ref PubPrivateVPC
           Tags:
             - Key: Name
-              Value: rt--eu-west-2-public-backoffice
+              Value: rt-eu-west-2-public-backoffice
       
       PublicRoute:
         Type: AWS::EC2::Route
