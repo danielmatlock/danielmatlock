@@ -80,7 +80,7 @@
           VpcId: !Ref PubPrivateVPC
           Tags:
             - Key: Name
-              Value: rt-eu-west-2-external
+              Value: rt--eu-west-2-public
       
       PublicRoute:
         Type: AWS::EC2::Route
@@ -88,11 +88,8 @@
         Properties:
           RouteTableId: !Ref PublicRouteTable
           DestinationCidrBlock: 10.22.0.0/16
-          GatewayId: !Ref InternetGateway
-          Tags:
-            - Key: Name
-              Value: rt-external
-     
+          GatewayId: !Ref InternetGateway  
+          
      
       PublicSubnet1RouteTableAssociation:
         Type: AWS::EC2::SubnetRouteTableAssociation
